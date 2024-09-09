@@ -1,6 +1,16 @@
-.contadorBox {
+.caixaDoContador {
     position: relative;
     margin-top: 0;
     background-color: cadetblue;
-    height: 50px;
+    height: 8%;
+    min-height: 50px;
+    font-size: 38px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+}
+
+.conteudo {
+    width: fit-content;
+    margin-right: 5%;
 }
