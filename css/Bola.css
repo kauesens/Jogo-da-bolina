@@ -1,0 +1,7 @@
+#bola {
+    display: block;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(127, 255, 7);
+    border-radius: 80%;
+}

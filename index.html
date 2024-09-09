@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/Bola.css">
+    <link rel="stylesheet" type="text/css" href="/css/ContadorDeClicks.css">
+    <link rel="stylesheet" type="text/css" href="/css/TelaInicial.css">
+    <title>Jogo da Bolinha</title>
+</head>
+
+<body style="overflow: hidden;">
+    <style>
+        body {
+            background-image: url('/img/game-background.jpg');
+            background-size: cover;
+        }
+    </style>
+    <div class="telaInicial">
+        <div class="telaInicialConteudo">
+            <div class="introForm">
+                <input type="text" id="nomeJogador" style="width: 60%; height: 10%; font-size: large;">
+                <input type="button" value="Jogar" style="width: 60%; height: 10%;">
+            </div>
+        </div>
+    </div>
+    <div class="caixaDoContador">
+        <span class="conteudo">
+            Pontos: <span id="pontuacao">0</span>
+        </span>
+        <span class="conteudo">
+            Tempo Restante: <span id="temporizador">60</span>
+        </span>
+
+    </div>
+
+    <div id="bola" onclick="qualquerCoisa()"></div>
+
+    <script>
+        const TEMPO_TOTAL = 60;
+        const ALTURA_TELA = window.screen.height - (window.screen.height * 0.19);
+
+        // let jogoTerminou = false;
+        // let jogoIniciou = false;
+        // let intervalID = null;
+        let pontos = 0;
+        let tempo = TEMPO_TOTAL;
+
+        let temporizador = document.getElementById("temporizador");
+        let bola = document.getElementById("bola");
+        let pontuacao = document.getElementById("pontuacao");
+        let campo = document.getElementById("campo")
+
+        console.log(ALTURA_TELA);
+
+        campo.style.height = ALTURA_TELA
+        pontuacao.innerHTML = pontos;
+        temporizador.innerHTML = tempo;
+        function randomColor() {
+            let coresHexadecimal = [
+                "#000000", // Preto
+                "#FF0000", // Vermelho
+                "#00FF00", // Verde
+                "#0000FF", // Azul
+                "#FFFF00", // Amarelo
+                "#00FFFF", // Ciano
+                "#FF00FF", // Magenta
+                "#D3D3D3", // Cinza Claro
+                "#A9A9A9", // Cinza Escuro
+                "#FFA500", // Laranja
+                "#FFC0CB", // Rosa
+                "#800080", // Roxo
+                "#A52A2A", // Marrom
+                "#F5F5DC", // Bege
+                "#40E0D0", // Turquesa
+                "#808000", // Oliva
+                "#4B0082", // Indigo
+                "#FFD700", // Dourado
+                "#C0C0C0"  // Prata
+            ];
+            return coresHexadecimal[randomPosition(18, 0)];
+        }
+        function randomPosition(max, min) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        function qualquerCoisa() {
+            bola.style.marginLeft = randomPosition(window.screen.width - 150, 0) + "px";
+            bola.style.marginTop = randomPosition(ALTURA_TELA - 150, 0) + "px";
+            bola.style.backgroundColor = randomColor();
+            pontos += 1;
+            pontuacao.innerHTML = pontos;
+            console.log("margin top -> ", bola.style.marginTop)
+            console.log("margin left -> ", bola.style.marginLeft)
+        }
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</body>
+
+</html>
